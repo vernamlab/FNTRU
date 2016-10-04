@@ -12,3 +12,6 @@ SetNumThreads(thread);
 This library uses NTL (v9.9.1 or later) with GMP support (with C++11 on). Tested on Linux environment. You can use the makefile to compile the project with he following command:
 
 make
+
+# Acknowledgment
+Funding for this research was in part provided by the US National Science Foundation CNS Award #1319130.
