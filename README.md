@@ -3,7 +3,7 @@ The library provides a homomorphic encryption scheme by Doröz and Sunar. Our sc
 
 The details of the scheme can be seen in : https://eprint.iacr.org/2016/315.pdf.
 
-# Thread Number
+# Thread
 User can set the number of thread that they want to use. The parallelism is achieved by using NTL thread settings. In order to set the number of threads, you can use the following function:
 
 SetNumThreads(thread);
