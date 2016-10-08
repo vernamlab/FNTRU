@@ -273,6 +273,7 @@ void VectorDotProd(ZZX &c, vec_ZZX &a, vec_ZZX &b, int &vectorLength, ssntru &n)
 //Matrix vector multiplication. TODO: Check 3 options for which one is more optimized for speed and area.
 void MatrixVectorMul(vec_ZZX &c, mat_ZZX &a, vec_ZZX &b, int &vectorLength, ssntru &n){
 
+#ifdef Thread
 #ifdef MULT1
 	ZZX acc, tmp;
 
@@ -365,6 +366,25 @@ void MatrixVectorMul(vec_ZZX &c, mat_ZZX &a, vec_ZZX &b, int &vectorLength, ssnt
 //		for(int j=0; j<vectorLength; j++)
 //			c[j] = c[j] + acc[j];
 	}
+#endif
+#endif
+
+#ifndef Thread
+	ZZX acc, tmp;
+	ZZX t, t2;
+	ZZX tt[vectorLength];
+
+	for (int i = 0; i<vectorLength; i++) {
+		acc = 0;
+		for (int k = 0; k<vectorLength; k++)
+			mul(tt[k], a.row[i][k], b[k]);
+
+		acc = 0;
+		for(int j=0; j<vectorLength; j++)
+			acc = acc + tt[j];
+		c[i] = acc;
+	}
+
 #endif
 }
 // Coefficient modulus reduction for all ciphertexts in fntru ciphertext
