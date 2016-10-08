@@ -355,8 +355,14 @@ void GateTest(){
 
 int main(){
 
+	int threadNum = 4;
+	SetNumThreads(threadNum);
+
+	// Create random boolean circuit and compute
 	RandomBooleanTest();
+	// Test if the gate functions work correctly
 	GateTest();
+
 
 	return 0;
 }
